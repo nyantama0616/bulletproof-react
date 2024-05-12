@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  web:
+    build: .
+    ports:
+      - "3500:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    tty: true
+    stdin_open: true
+    command: yarn start
+
+  storybook:
+    build: .
+    ports:
+      - "9006:6006"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    tty: true
+    stdin_open: true
+    command: yarn storybook
